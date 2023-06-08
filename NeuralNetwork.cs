@@ -1,35 +1,44 @@
-
-
 class NeuralNetwork
+{
+    //Initilaizing variables
+    int layers;
+
+    public float[][] neurons;    //two demensional matrix
+    public float[][][] weigths; //three demesnional matrix
+                                //public float[] bais;
+
+
+    //Constructer 
+    public NeuralNetwork(int layers, int[] layerSize)
     {
-        //Initilaizing variables
-        int layers;
-
-        float[][] neurons;    //two demensional matrix
-        float[][][] weigths; //three demesnional matrix
-        
+        this.layers = layers;
+        neurons = new float[this.layers][];       // Adding all the Layers
+        weigths = new float[this.layers - 1][][];//Strucuring the weights matrix (Input Layer doesnt have incomming weights)
 
 
-        //Constructer 
-        public NeuralNetwork(int layers, int[] layerSize)
+        for (int i = 0; i < this.layers; i++)
         {
-            this.layers = layers;
-            neurons = new float[this.layers][];       // Adding all the Layers
-            weigths = new float[this.layers - 1][][];//Strucuring the weights matrix (Input Layer doesnt have incomming weights)
+            neurons[i] = new float[layerSize[i]]; //  Adding all the Neurons in each layer
 
-            for (int i = 0;  i < this.layers; i++)
+
+            if (i != 0)
             {
-                neurons[i] = new float[layerSize[i]]; //  Adding all the Neurons in each layer
-                /*Curently working on because it is wrong
-                if(i != 0)
+                for (int j = 0; j < layerSize[i]; j++)
                 {
-                    weigths[i] = new float[layerSize[i]][layerSize[i-1]];
+                    weigths[j][layerSize[i]] = new float[layerSize[i - 1]]; // Adding all the weigths to all the neurons
                 }
-                */
             }
-        }
-        
 
-         
+            /*
+            if (i != 0)
+            {
+                weigths[i-1][layerSize[i]] = new float[layerSize[i - 1]];
+                
+            }
+            */
+
+        }
+
 
     }
+}
