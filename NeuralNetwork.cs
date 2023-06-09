@@ -1,12 +1,11 @@
-
 class NeuralNetwork
 {
     //Initilaizing variables
     int layers;
 
-    public float[][] neurons;    //two demensional matrix
-    public float[][][] weigths; //three demesnional matrix
-    public int[] bais;         // array for all bais 
+    float[][] neurons;    //two demensional matrix
+    float[][][] weigths; //three demesnional matrix
+    int[] bais;         // array for all bais 
 
 
 
@@ -40,15 +39,50 @@ class NeuralNetwork
     }
 
 
-    float[] Prediction(float[] input)
-    {
-        neurons[0] = input;// save Inputs in the InputLayer
 
-        return null;
+    public float[] prediction(float[] inputs)
+    {
+        int baisIndex = 0;
+
+        neurons[0] = inputs;//save inputs to InputLayer
+
+        for (int i = 1; i <= layers; i++)
+        {
+            for (int j = 0; j <= neurons[i].Length; j++)
+            {
+                for (int k = 0; k < weigths[i - 1][j].Length; k++)
+                {
+                    neurons[i][j] = neurons[i - 1][k] * weigths[i - 1][j][k] + bais[baisIndex];
+                }
+                baisIndex++;
+            }
+        }
+
+        return neurons[neurons.Length - 1];
     }
 
 
+    public void GiveRandomNumbers()
+    {
+        Random randomNumber = new Random();
+        for (int i = 0; i < bais.Length; i++)
+        {
+            bais[i] = randomNumber.Next(-25, 25);
+        }
 
+        for (int i = 0; i < weigths.Length; i++)
+        {
+            for (int j = 0; j < weigths[i].Length; j++)
+            {
+                for (int k = 0; k < weigths[i][j].Length; k++)
+                {
+                    weigths[i][j][k] = randomNumber.Next(-25, 25);
+
+                }
+            }
+        }
+
+    }
 
 
 }
