@@ -40,20 +40,25 @@ class NeuralNetwork
 
 
 
-    public float[] prediction(float[] inputs)
+
+    public float[] Prediction(float[] inputs)
+
     {
         int baisIndex = 0;
 
-        neurons[0] = inputs;//save inputs to InputLayer
+        neurons[0] = inputs;//adding inputs to InputLayer
 
-        for (int i = 1; i <= layers; i++)
+        for (int i = 1; i < layers; i++)
         {
-            for (int j = 0; j <= neurons[i].Length; j++)
+            for (int j = 0; j < neurons[i].Length; j++)
             {
+                //neurons[i][j] = 0; // Initialize neuron value
                 for (int k = 0; k < weigths[i - 1][j].Length; k++)
                 {
-                    neurons[i][j] = neurons[i - 1][k] * weigths[i - 1][j][k] + bais[baisIndex];
+                    neurons[i][j] += neurons[i - 1][k] * weigths[i - 1][j][k];
+
                 }
+                neurons[i][j] += bais[baisIndex];
                 baisIndex++;
             }
         }
