@@ -42,7 +42,7 @@ class NeuralNetwork
 
     float[] Prediction(float[] input)
     {
-
+        neurons[0] = input;// save Inputs in the InputLayer
 
         return null;
     }
