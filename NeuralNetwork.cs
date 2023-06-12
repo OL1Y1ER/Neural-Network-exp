@@ -66,7 +66,7 @@ class NeuralNetwork
         return neurons[neurons.Length - 1];
     }
 
-    /* NO FUCKING IDEA IF IT ACTUALY WORKS HELP
+    // Randaom has to be changed if used in Unity
     public void GiveRandomNumbers()
     {
         Random randomNumber = new Random();
@@ -88,7 +88,7 @@ class NeuralNetwork
         }
 
     }
-    */
+
 
 
 }
