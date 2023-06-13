@@ -29,9 +29,10 @@ class NeuralNetwork
             }
         }
 
-        bias = new int[biasLength - layerSize[0]];
+        bias = new int[biasLength - layerSize[0]]; // Initilializing the biasis
     }
 
+    //Predicts an Output by calculating all neurons together
     public float[] Prediction(float[] inputs)
     {
         int biasIndex = 0;
@@ -54,6 +55,13 @@ class NeuralNetwork
         return neurons[neurons.Length - 1];
     }
 
+
+    //Activation function to make the neural network not linar and able to do more complex things
+    private float ActivationFunction(int prediction)
+    {
+
+    }
+
     // Random has to be changed if used in Unity
     public void GiveRandomNumbers()
     {
@@ -74,4 +82,35 @@ class NeuralNetwork
             }
         }
     }
+
+    //Calculate the Loss of the predictid Output and correct Output 
+    private float Loss()
+    {
+
+    }
+
+    //Algorithm to update biasis and weights
+    private void TrainingAlgorithim()
+    {
+
+    }
+
+    //Just to make it cleaner: here comes Training Data in and Neural Network trains..
+    private void TrainingLoop()
+    {
+
+    }
+
+    //Evaluates how good the neural Network performed based on a new data set
+    public float Evaluation()
+    {
+
+    }
+
+    //Saves the values of biasis and weights
+    public void SaveNeuralNetwork()
+    {
+
+    }
+
 }
