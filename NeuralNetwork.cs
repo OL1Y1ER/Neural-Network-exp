@@ -29,10 +29,10 @@ class NeuralNetwork
             }
         }
 
-        bias = new int[biasLength - layerSize[0]]; // Initilializing the biasis
+        bias = new int[biasLength - layerSize[0]]; // Initializing the biases
     }
 
-    //Predicts an Output by calculating all neurons together
+    // Predicts an Output by calculating all neurons together
     public float[] Prediction(float[] inputs)
     {
         int biasIndex = 0;
@@ -56,7 +56,7 @@ class NeuralNetwork
     }
 
 
-    //Activation function to make the neural network not linar and able to do more complex things
+    // Activation function to make the neural network not linear and able to do more complex things
     private float ActivationFunction(int prediction)
     {
 
@@ -83,31 +83,31 @@ class NeuralNetwork
         }
     }
 
-    //Calculate the Loss of the predictid Output and correct Output 
+    // Calculate the Loss of the predicted Output and correct Output 
     private float Loss()
     {
 
     }
 
-    //Algorithm to update biasis and weights
-    private void TrainingAlgorithim()
+    // Algorithm to update biases and weights
+    private void TrainingAlgorithm()
     {
 
     }
 
-    //Just to make it cleaner: here comes Training Data in and Neural Network trains..
+    // Just to make it cleaner: here comes Training Data in and Neural Network trains...
     private void TrainingLoop()
     {
 
     }
 
-    //Evaluates how good the neural Network performed based on a new data set
+    // Evaluates how good the neural Network performed based on a new data set
     public float Evaluation()
     {
 
     }
 
-    //Saves the values of biasis and weights
+    // Saves the values of biases and weights
     public void SaveNeuralNetwork()
     {
 
