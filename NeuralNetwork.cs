@@ -1,3 +1,5 @@
+using System;
+
 class NeuralNetwork
 {
     // Initializing variables
@@ -59,7 +61,7 @@ class NeuralNetwork
     // Activation function to make the neural network not linear and able to do more complex things
     private float ActivationFunction(int prediction)
     {
-
+        return (1 / 1 + Math.Exp(-prediction));
     }
 
     // Random has to be changed if used in Unity
@@ -84,7 +86,7 @@ class NeuralNetwork
     }
 
     // Calculate the Loss of the predicted Output and correct Output 
-    private float Loss()
+    private float Loss(float[] predictOutput, float[] corectOutput)
     {
 
     }
