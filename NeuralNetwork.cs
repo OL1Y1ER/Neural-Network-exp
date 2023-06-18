@@ -91,19 +91,19 @@ class NeuralNetwork
         float diff = 0;
         for (int i = 0; i < predictOutput.Length; i++)
         {
-            diff += (corectOutput - predictOutput) * (predictOutput - corectOutput);
+            diff += (corectOutput[i] - predictOutput[i]) * (predictOutput[i] - corectOutput[i]);
         }
         return (diff / predictOutput.Length);
     }
 
     // Algorithm to update biases and weights
-    private void TrainingAlgorithm()
+    private void TrainingAlgorithm(float[] trainingInput, float[] correctOutput)
     {
 
     }
 
     // Just to make it cleaner: here comes Training Data in and Neural Network trains...
-    private void TrainingLoop()
+    private void TrainingLoop(float[][][] trainingData)
     {
 
     }
@@ -117,7 +117,7 @@ class NeuralNetwork
 
         for (int i = 0; i < predictions.Length; i++)
         {
-            if (predictions[i] == testingDataSet[1][i])// checking if the predicted data is the same as the correct answer
+            if (Math.Abs(predictions[i] - testingDataSet[1][i]) < 0.0001)// checking if the predicted data is close to the correct answer
             {
                 evaluation++; // If predictions are correct add credit
             }
