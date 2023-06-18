@@ -109,9 +109,20 @@ class NeuralNetwork
     }
 
     // Evaluates how good the neural Network performed based on a new data set
-    public float Evaluation()
+    public float Evaluation(float[][] testingDataSet)//testingDataSet is two demensional matrix one row is for the input and the other row is the correct prediction
     {
+        float[] predictions = new float[testingDataSet[0].Length]; //Initilize predictions array
+        float evaluation = 0;
+        predictions = Prediction(testingDataSet[0]); // predicting the testingDataSet
 
+        for (int i = 0; i < predictions.Length; i++)
+        {
+            if (predictions[i] == testingDataSet[1][i])// checking if the predicted data is the same as the correct answer
+            {
+                evaluation++; // If predictions are correct add credit
+            }
+        }
+        evaluation = (evaluation / predictions.Length) * 100;//changing evaluation into percentage for better visualisation of the perdormance
     }
 
     // Saves the values of biases and weights
