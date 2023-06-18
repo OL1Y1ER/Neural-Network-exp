@@ -88,7 +88,7 @@ class NeuralNetwork
     // Calculate the Loss of the predicted Output and correct Output 
     private float Loss(float[] predictOutput, float[] corectOutput)
     {
-        return((corectOutput-predictOutput)*(corectOutput-predictOutput))
+        return ((corectOutput - predictOutput) * (corectOutput - predictOutput));
     }
 
     // Algorithm to update biases and weights
