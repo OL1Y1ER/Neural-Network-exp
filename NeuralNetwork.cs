@@ -61,7 +61,7 @@ class NeuralNetwork
     // Activation function to make the neural network not linear and able to do more complex things
     private float ActivationFunction(float prediction)
     {
-        return (1f / (1f + (float)Math.Exp(-prediction)));
+        return (1 / (1 + (float)Math.Exp(-prediction)));
     }
 
     // Random has to be changed if used in Unity
