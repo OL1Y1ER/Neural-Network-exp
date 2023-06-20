@@ -59,9 +59,9 @@ class NeuralNetwork
 
 
     // Activation function to make the neural network not linear and able to do more complex things
-    private float ActivationFunction(int prediction)
+    private float ActivationFunction(float prediction)
     {
-        return (1 / 1 + Math.Exp(-prediction));
+        return (1f / (1f + (float)Math.Exp(-prediction)));
     }
 
     // Random has to be changed if used in Unity
@@ -86,14 +86,14 @@ class NeuralNetwork
     }
 
     // Calculate the Loss of the predicted Output and correct Output 
-    private float Loss(float[] predictOutput, float[] corectOutput)
+    private float Loss(float[] predictedOutput, float[] correctOutput)
     {
         float diff = 0;
-        for (int i = 0; i < predictOutput.Length; i++)
+        for (int i = 0; i < predictedOutput.Length; i++)
         {
-            diff += (corectOutput[i] - predictOutput[i]) * (predictOutput[i] - corectOutput[i]);
+            diff += (correctOutput[i] - predictedOutput[i]) * (predictedOutput[i] - correctOutput[i]);
         }
-        return (diff / predictOutput.Length);
+        return (diff / predictedOutput.Length);
     }
 
     // Algorithm to update biases and weights
@@ -109,20 +109,21 @@ class NeuralNetwork
     }
 
     // Evaluates how good the neural Network performed based on a new data set
-    public float Evaluation(float[][] testingDataSet)//testingDataSet is two demensional matrix one row is for the input and the other row is the correct prediction
+    public float Evaluation(float[][] testingDataSet) // testingDataSet is a two-dimensional matrix, where one row is for the input and the other row is the correct prediction
     {
-        float[] predictions = new float[testingDataSet[0].Length]; //Initilize predictions array
+        float[] predictions = new float[testingDataSet[0].Length]; // Initialize predictions array
         float evaluation = 0;
         predictions = Prediction(testingDataSet[0]); // predicting the testingDataSet
 
         for (int i = 0; i < predictions.Length; i++)
         {
-            if (Math.Abs(predictions[i] - testingDataSet[1][i]) < 0.0001)// checking if the predicted data is close to the correct answer
+            if (Math.Abs(predictions[i] - testingDataSet[1][i]) < 0.0001) // checking if the predicted data is close to the correct answer
             {
-                evaluation++; // If predictions are correct add credit
+                evaluation++; // If predictions are correct, add credit
             }
         }
-        evaluation = (evaluation / predictions.Length) * 100;//changing evaluation into percentage for better visualisation of the perdormance
+        evaluation = (evaluation / predictions.Length) * 100; // changing evaluation into percentage for better visualization of the performance
+        return evaluation;
     }
 
     // Saves the values of biases and weights
@@ -130,5 +131,4 @@ class NeuralNetwork
     {
 
     }
-
 }
