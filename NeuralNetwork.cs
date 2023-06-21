@@ -31,7 +31,7 @@ class NeuralNetwork
             }
         }
 
-        bias = new int[biasLength - layerSize[0]]; // Initializing the biases
+        bias = new float[biasLength - layerSize[0]]; // Initializing the biases
     }
 
     // Predicts an Output by calculating all neurons together
@@ -44,7 +44,6 @@ class NeuralNetwork
         {
             for (int j = 0; j < neurons[i].Length; j++)
             {
-                // neurons[i][j] = 0; // Initialize neuron value
                 for (int k = 0; k < weights[i - 1][j].Length; k++)
                 {
                     neurons[i][j] += neurons[i - 1][k] * weights[i - 1][j][k];
@@ -57,17 +56,16 @@ class NeuralNetwork
         return neurons[neurons.Length - 1];
     }
 
-
     // Activation function to make the neural network not linear and able to do more complex things
     private float ActivationFunction(float prediction)
     {
-        return (1 / (1 + (float)Math.Exp(-prediction)));
+        return (1 / (1 + Mathf.Exp(-prediction)));
     }
 
     // Random has to be changed if used in Unity
     public void GiveRandomNumbers()
     {
-        Random randomNumber = new Random();
+        System.Random randomNumber = new System.Random();
         for (int i = 0; i < bias.Length; i++)
         {
             bias[i] = randomNumber.Next(-25, 25);
@@ -79,7 +77,7 @@ class NeuralNetwork
             {
                 for (int k = 0; k < weights[i][j].Length; k++)
                 {
-                    weights[i][j][k] = randomNumber.Next(-25, 25);
+                    weights[i][j][k] = (float)randomNumber.NextDouble() * 2 - 1;
                 }
             }
         }
@@ -99,17 +97,17 @@ class NeuralNetwork
     // Algorithm to update biases and weights
     private void TrainingAlgorithm(float[] trainingInput, float[] correctOutput)
     {
-
+        // Implementation of training algorithm
     }
 
     // Just to make it cleaner: here comes Training Data in and Neural Network trains...
     private void TrainingLoop(float[][][] trainingData)
     {
-
+        // Implementation of training loop
     }
 
     // Evaluates how good the neural Network performed based on a new data set
-    public float Evaluation(float[][] testingDataSet) // testingDataSet is a two-dimensional matrix, where one row is for the input and the other row is the correct prediction
+    public float Evaluation(float[][] testingDataSet)
     {
         float[] predictions = new float[testingDataSet[0].Length]; // Initialize predictions array
         float evaluation = 0;
@@ -117,7 +115,7 @@ class NeuralNetwork
 
         for (int i = 0; i < predictions.Length; i++)
         {
-            if (Math.Abs(predictions[i] - testingDataSet[1][i]) < 0.0001) // checking if the predicted data is close to the correct answer
+            if (Mathf.Abs(predictions[i] - testingDataSet[1][i]) < 0.0001) // checking if the predicted data is close to the correct answer
             {
                 evaluation++; // If predictions are correct, add credit
             }
@@ -129,6 +127,6 @@ class NeuralNetwork
     // Saves the values of biases and weights
     public void SaveNeuralNetwork()
     {
-
+        // Implementation of saving the neural network
     }
 }
