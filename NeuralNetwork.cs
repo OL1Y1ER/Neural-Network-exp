@@ -1,12 +1,11 @@
 using System;
-
 class NeuralNetwork
 {
     // Initializing variables
     int layers;
     float[][] neurons;    // Two-dimensional matrix
     float[][][] weights; // Three-dimensional matrix
-    int[] bias;         // Array for all biases 
+    float[] bias;         // Array for all biases 
 
     // Constructor initializes the Neural Network
     public NeuralNetwork(int layers, int[] layerSize)
