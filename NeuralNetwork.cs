@@ -97,15 +97,18 @@ class NeuralNetwork
     }
 
     // Algorithm to update biases and weights
-    private void TrainingAlgorithm(float[] trainingInput, float[] correctOutput)
+    private void TrainingAlgorithm(float trainingInput, float correctOutput)
     {
-
+        // I will try to implement a BackPropagation algorithm
     }
 
     // Just to make it cleaner: here comes Training Data in and Neural Network trains...
-    private void TrainingLoop(float[][][] trainingData)
+    private void TrainingLoop(float[][] trainingData)
     {
-
+        for (int i = 0; i < trainingData[0].Length; i++)
+        {
+            TrainingAlgorithm(trainingData[0][i], trainingData[1][i]); // Looping through all the trainingData and Training the Neural Network
+        }
     }
 
     // Evaluates how good the neural Network performed based on a new data set
