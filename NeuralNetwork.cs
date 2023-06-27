@@ -1,4 +1,20 @@
+/****************************************************************
+NEURAL NETWORK
+This code is ment to be a library... it is clearly not done.
+
+Those are the following functions it will have:
+-Creating a neural network
+-Training Neural network
+-Saving " "
+-Loading " "
+
+
+@author Olivier
+@version 0
+****************************************************************/
+
 using System;
+
 
 class NeuralNetwork
 {
