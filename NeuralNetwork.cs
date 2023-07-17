@@ -146,8 +146,9 @@ class NeuralNetwork
     }
 
     // Saves the values of biases and weights
-    public void SaveNeuralNetwork()
+    public void SaveNeuralNetwork(float[][][] weights, float[] bais)
     {
+        //Todo: Put code here for saving
 
     }
 }
