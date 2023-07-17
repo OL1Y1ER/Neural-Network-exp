@@ -80,13 +80,15 @@ class NeuralNetwork
         return (1 / (1 + (float)Math.Exp(-prediction)));
     }
 
+
+
     // Random has to be changed if used in Unity
     public void GiveRandomNumbers()
     {
         Random randomNumber = new Random();
         for (int i = 0; i < bias.Length; i++)
         {
-            bias[i] = randomNumber.Next(-25, 25);
+            bias[i] = randomNumber.Next(-0.1, 0.1);
         }
 
         for (int i = 0; i < weights.Length; i++)
@@ -95,7 +97,7 @@ class NeuralNetwork
             {
                 for (int k = 0; k < weights[i][j].Length; k++)
                 {
-                    weights[i][j][k] = randomNumber.Next(-25, 25);
+                    weights[i][j][k] = randomNumber.Next(-0.1, 0.1);
                 }
             }
         }
