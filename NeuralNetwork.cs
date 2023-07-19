@@ -151,6 +151,7 @@ class NeuralNetwork
     public void SaveNeuralNetwork(float[][][] weights, float[] bais)
     {
         //Todo: Put code here for saving
+        //?How should I save it
 
     }
 }
