@@ -151,8 +151,27 @@ class NeuralNetwork
     public void SaveNeuralNetwork(float[][][] weights, float[] bais)
     {
         //Todo: Put code here for saving
+        string weightsFile = "";
+        string baisFile = "";
 
+        foreach (float f in bais)
+        {
+            baisFile += f.ToString() + "|";
+        }
 
+        //! NOT TESTED
+        for (int i = 0; i < weights.Length; i++)
+        {
+            for (int j = 0; j < weights[i].Length; j++)
+            {
+                for (int k = 0; k < weights[i][j].Length; k++)
+                {
+                    weightsFile += weights[i][j][k].ToString() + "|";
+                }
+            }
+        }
+
+        //Todo: save it somwhere
     }
 
     public void LoadNeuralNetwork()
