@@ -174,7 +174,7 @@ class NeuralNetwork
         //Todo: save it somwhere
     }
 
-    public void LoadNeuralNetwork(float[][][] weights, float[] bais, float[][] neurons) // Sets defined values for weights and bais
+    public void LoadNeuralNetwork(float[][][] weights, float[] bais, float[][] neurons) // Sets defined values for weights and bais, should be used instead of "GiveRandomNumbers"
     {
         this.weights = weights;
         this.bias = bais;
