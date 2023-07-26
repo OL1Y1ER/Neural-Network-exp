@@ -2,15 +2,8 @@
 NEURAL NETWORK
 This code is ment to be a library... it is clearly not done.
 
-Those are the following functions it will have:
--Creating a neural network
--Training Neural network
--Saving " "
--Loading " "
-
-
 @author Olivier
-@version 0
+@version 1.0
 ****************************************************************/
 
 using System;
@@ -78,6 +71,7 @@ class NeuralNetwork
     private float ActivationFunction(float prediction)
     {
         return (1 / (1 + (float)Math.Exp(-prediction)));
+        //Todo: implimant multiple activation functions
     }
 
 
@@ -117,7 +111,7 @@ class NeuralNetwork
     // Algorithm to update biases and weights
     private void TrainingAlgorithm(float trainingInput, float correctOutput)
     {
-        // I will try to implement a BackPropagation algorithm
+        //Todo: I will try to implement a BackPropagation algorithm
     }
 
     // Just to make it cleaner: here comes Training Data in and Neural Network trains...
@@ -150,7 +144,6 @@ class NeuralNetwork
     // Saves the values of biases and weights
     public void SaveNeuralNetwork(float[][][] weights, float[] bais)
     {
-        //Todo: Put code here for saving
         string weightsFile = "";
         string baisFile = "";
 
