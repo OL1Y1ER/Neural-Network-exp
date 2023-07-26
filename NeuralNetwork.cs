@@ -174,8 +174,10 @@ class NeuralNetwork
         //Todo: save it somwhere
     }
 
-    public void LoadNeuralNetwork()
+    public void LoadNeuralNetwork(float[][][] weights, float[] bais, float[][] neurons) // Sets defined values for weights and bais
     {
-        //Todo: Put code here
+        this.weights = weights;
+        this.bias = bais;
+        this.neurons = neurons;
     }
 }
