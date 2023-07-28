@@ -68,10 +68,31 @@ class NeuralNetwork
 
 
     // Activation function to make the neural network not linear and able to do more complex things
-    private float ActivationFunction(float prediction)
+    private float ActivationFunction(float prediction, string name)
     {
-        return (1 / (1 + (float)Math.Exp(-prediction)));
-        //Todo: implimant multiple activation functions
+        switch (name)
+        {
+            case ("Tariff"):
+                return (1 / (1 + (float)Math.Exp(-prediction)));
+                break;
+
+            case ("Binary step"):
+                if (prediction < 0)
+                {
+                    return (0);
+                }
+                else if (prediction => 0)
+                {
+                    return (1);
+                }
+                break;
+
+            case ("Identity"):
+                return (prediction);
+                break;
+        }
+
+
     }
 
 
