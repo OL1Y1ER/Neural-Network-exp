@@ -7,7 +7,7 @@ This code is ment to be a library... it is clearly not done.
 ****************************************************************/
 
 using System;
-
+using System.IO;
 
 class NeuralNetwork
 {
@@ -163,7 +163,7 @@ class NeuralNetwork
     }
 
     // Saves the values of biases and weights
-    public void SaveNeuralNetwork(float[][][] weights, float[] bais)
+    public void SaveNeuralNetwork(float[][][] weights, float[] bais, string filePath)
     {
         string weightsFile = "";
         string baisFile = "";
@@ -185,7 +185,7 @@ class NeuralNetwork
             }
         }
 
-        //Todo: save it somwhere
+        File.WriteAllText(filePath, weightsFile + "§" + baisFile);
     }
 
     public void LoadNeuralNetwork(float[][][] weights, float[] bais, float[][] neurons) // Sets defined values for weights and bais, should be used instead of "GiveRandomNumbers"
