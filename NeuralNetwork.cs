@@ -13,38 +13,38 @@ class NeuralNetwork
 {
     // Initializing variables
     int layers;
-    float[][] neurons;    // Two-dimensional matrix
-    float[][][] weights; // Three-dimensional matrix
-    int[] bias;         // Array for all biases 
+    double[][] neurons;    // Two-dimensional matrix
+    double[][][] weights; // Three-dimensional matrix
+    double[] bias;         // Array for all biases 
 
     // Constructor initializes the Neural Network
     public NeuralNetwork(int layers, int[] layerSize)
     {
         this.layers = layers;
-        neurons = new float[this.layers][];       // Adding all the Layers
-        weights = new float[this.layers - 1][][]; // Structuring the weights matrix (Input Layer doesn't have incoming weights)
+        neurons = new double[this.layers][];       // Adding all the Layers
+        weights = new double[this.layers - 1][][]; // Structuring the weights matrix (Input Layer doesn't have incoming weights)
         int biasLength = 0;
 
         for (int i = 0; i < this.layers; i++)
         {
-            neurons[i] = new float[layerSize[i]]; // Adding all the Neurons in each layer
+            neurons[i] = new double[layerSize[i]]; // Adding all the Neurons in each layer
             biasLength += layerSize[i];
 
             if (i != 0)
             {
-                weights[i - 1] = new float[layerSize[i]][];
+                weights[i - 1] = new double[layerSize[i]][];
                 for (int j = 0; j < layerSize[i]; j++)
                 {
-                    weights[i - 1][j] = new float[layerSize[i - 1]]; // Adding all the weights to all the neurons
+                    weights[i - 1][j] = new double[layerSize[i - 1]]; // Adding all the weights to all the neurons
                 }
             }
         }
 
-        bias = new int[biasLength - layerSize[0]]; // Initializing the biases
+        bias = new double[biasLength - layerSize[0]]; // Initializing the biases
     }
 
     // Predicts an Output by calculating all neurons together
-    public float[] Prediction(float[] inputs)
+    public double[] Prediction(double[] inputs)
     {
         int biasIndex = 0;
         neurons[0] = inputs; // Adding inputs to the input layer
@@ -70,40 +70,62 @@ class NeuralNetwork
     // Activation function to make the neural network not linear and able to do more complex things
     private float ActivationFunction(float prediction, string name)
     {
+        float activation = 0;
         switch (name)
         {
             case ("Tariff"):
-                return (1 / (1 + (float)Math.Exp(-prediction)));
+                activation = (1 / (1 + (float)Math.Exp(-prediction)));
                 break;
 
             case ("Binary step"):
                 if (prediction < 0)
                 {
-                    return (0);
+                    activation = 0;
                 }
-                else if (prediction => 0)
+                else if (prediction >= 0)
                 {
-                    return (1);
+                    activation = 1;
                 }
                 break;
 
             case ("Identity"):
-                return (prediction);
+                activation = prediction;
                 break;
+
         }
+        return (activation);
+
+
 
 
     }
 
+    private double RandomDouble(double min, double max)
+    {
+        Random R = new Random();
+        double d = R.NextDouble();
+        return d * (max - min) + min;
+    }
+
+    /*
+    private double RandomDouble(double min, double max)// Make Random doubles work
+    {
+        Random R = new Random();
+        double d = R.NextDouble();
+
+        double randomDouble = Math.Round((d * (max - min) + min) * 10) / 10;
+        return randomDouble;
+    }
+    */
 
 
     // Random has to be changed if used in Unity
     public void GiveRandomNumbers()
     {
-        Random randomNumber = new Random();
+
         for (int i = 0; i < bias.Length; i++)
         {
-            bias[i] = randomNumber.Next(-0.1, 0.1);
+            bias[i] = RandomDouble(-0.1, 0.1);
         }
 
         for (int i = 0; i < weights.Length; i++)
@@ -145,10 +167,10 @@ class NeuralNetwork
     }
 
     // Evaluates how good the neural Network performed based on a new data set
-    public float Evaluation(float[][] testingDataSet) // testingDataSet is a two-dimensional matrix, where one row is for the input and the other row is the correct prediction
+    public double Evaluation(double[][] testingDataSet) // testingDataSet is a two-dimensional matrix, where one row is for the input and the other row is the correct prediction
     {
-        float[] predictions = new float[testingDataSet[0].Length]; // Initialize predictions array
-        float evaluation = 0;
+        double[] predictions = new double[testingDataSet[0].Length]; // Initialize predictions array
+        double evaluation = 0;
         predictions = Prediction(testingDataSet[0]); // predicting the testingDataSet
 
         for (int i = 0; i < predictions.Length; i++)
@@ -188,7 +210,7 @@ class NeuralNetwork
         File.WriteAllText(filePath, weightsFile + "§" + baisFile);
     }
 
-    public void LoadNeuralNetwork(float[][][] weights, float[] bais, float[][] neurons) // Sets defined values for weights and bais, should be used instead of "GiveRandomNumbers"
+    public void LoadNeuralNetwork(double[][][] weights, double[] bais, double[][] neurons) // Sets defined values for weights and bais, should be used instead of "GiveRandomNumbers"
     {
         this.weights = weights;
         this.bias = bais;
