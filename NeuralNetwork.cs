@@ -100,23 +100,14 @@ class NeuralNetwork
 
     }
 
-    private double RandomDouble(double min, double max)
-    {
-        Random R = new Random();
-        double d = R.NextDouble();
-        return d * (max - min) + min;
-    }
-
-    /*
     private double RandomDouble(double min, double max)// Make Random doubles work
     {
         Random R = new Random();
         double d = R.NextDouble();
 
-        double randomDouble = Math.Round((d * (max - min) + min) * 10) / 10;
+        double randomDouble = Math.Round((d * (max - min) + min) * 100) / 100;
         return randomDouble;
     }
-    */
 
 
     // Random has to be changed if used in Unity
@@ -125,7 +116,7 @@ class NeuralNetwork
 
         for (int i = 0; i < bias.Length; i++)
         {
-            bias[i] = RandomDouble(-0.1, 0.1);
+            bias[i] = 0.1;
         }
 
         for (int i = 0; i < weights.Length; i++)
@@ -134,7 +125,7 @@ class NeuralNetwork
             {
                 for (int k = 0; k < weights[i][j].Length; k++)
                 {
-                    weights[i][j][k] = randomNumber.Next(-0.1, 0.1);
+                    weights[i][j][k] = RandomDouble(0.1, 0.1);
                 }
             }
         }
