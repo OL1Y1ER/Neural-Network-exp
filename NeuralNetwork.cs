@@ -16,6 +16,7 @@ class NeuralNetwork
     double[][] neurons;    // Two-dimensional matrix
     double[][][] weights; // Three-dimensional matrix
     double[] bias;         // Array for all biases 
+    
 
     // Constructor initializes the Neural Network
     public NeuralNetwork(int layers, int[] layerSize)
@@ -146,6 +147,7 @@ class NeuralNetwork
     private void TrainingAlgorithm(float trainingInput, float correctOutput)
     {
         //Todo: I will try to implement a BackPropagation algorithm
+        //Still missing --DOOOO it    
     }
 
     // Just to make it cleaner: here comes Training Data in and Neural Network trains...
