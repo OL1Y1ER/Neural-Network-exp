@@ -147,7 +147,7 @@ class NeuralNetwork
     private void TrainingAlgorithm(float trainingInput, float correctOutput)
     {
         //Todo: I will try to implement a BackPropagation algorithm
-        //Still missing --DOOOO it    
+        //I have to do it in the next two days.... FUCK
     }
 
     // Just to make it cleaner: here comes Training Data in and Neural Network trains...
