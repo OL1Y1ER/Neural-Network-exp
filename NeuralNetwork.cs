@@ -59,6 +59,7 @@ class NeuralNetwork
                 {
                     neurons[i][j] += neurons[i - 1][k] * weights[i - 1][j][k];
                 }
+                neurons[i][j] = ActivationFunction(neurons[i][j], "Binary step"); //Use an Activation function
                 neurons[i][j] += bias[biasIndex];
                 biasIndex++;
             }
