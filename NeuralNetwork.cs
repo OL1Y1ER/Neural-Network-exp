@@ -126,7 +126,7 @@ class NeuralNetwork
             {
                 for (int k = 0; k < weights[i][j].Length; k++)
                 {
-                    weights[i][j][k] = RandomDouble(0.1, 0.1);
+                    weights[i][j][k] = RandomDouble(-1, 1); // Seting weights randomly between -1 and 1
                 }
             }
         }
