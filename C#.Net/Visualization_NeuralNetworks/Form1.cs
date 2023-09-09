@@ -15,6 +15,7 @@ namespace Visualization_NeuralNetworks
         public Form1()
         {
             InitializeComponent();
+            System.Console.WriteLine("TEST");
         }
     }
 }
