@@ -7,4 +7,4 @@ E:\git_clones\MyProjects\Neural-Network-exp\C#.Net\Visualization_NeuralNetworks\
 E:\git_clones\MyProjects\Neural-Network-exp\C#.Net\Visualization_NeuralNetworks\obj\Debug\Visualization_NeuralNetworks.csproj.CoreCompileInputs.cache
 E:\git_clones\MyProjects\Neural-Network-exp\C#.Net\Visualization_NeuralNetworks\obj\Debug\Visualization_NeuralNetworks.exe
 E:\git_clones\MyProjects\Neural-Network-exp\C#.Net\Visualization_NeuralNetworks\obj\Debug\Visualization_NeuralNetworks.pdb
-E:\git_clones\MyProjects\Neural-Network-exp\C#.Net\Visualization_NeuralNetworks\obj\Debug\Visualization_NeuralNetworks.Form1.resources
+E:\git_clones\MyProjects\Neural-Network-exp\C#.Net\Visualization_NeuralNetworks\obj\Debug\Visualization_NeuralNetworks.NeuronNetwork.resources

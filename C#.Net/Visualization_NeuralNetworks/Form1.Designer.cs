@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.Input_inputNeurons = new System.Windows.Forms.TextBox();
             this.I3 = new System.Windows.Forms.PictureBox();
             this.I2 = new System.Windows.Forms.PictureBox();
             this.I1 = new System.Windows.Forms.PictureBox();
@@ -46,6 +45,8 @@
             this.h6 = new System.Windows.Forms.PictureBox();
             this.h7 = new System.Windows.Forms.PictureBox();
             this.h8 = new System.Windows.Forms.PictureBox();
+            this.Input_inputNeurons = new System.Windows.Forms.TextBox();
+            this.Input_hiddenLayer = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.I3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.I2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.I1)).BeginInit();
@@ -62,13 +63,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.h7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.h8)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Input_inputNeurons
-            // 
-            this.Input_inputNeurons.Location = new System.Drawing.Point(108, 275);
-            this.Input_inputNeurons.Name = "Input_inputNeurons";
-            this.Input_inputNeurons.Size = new System.Drawing.Size(25, 20);
-            this.Input_inputNeurons.TabIndex = 0;
             // 
             // I3
             // 
@@ -215,12 +209,27 @@
             this.h8.TabIndex = 12;
             this.h8.TabStop = false;
             // 
+            // Input_inputNeurons
+            // 
+            this.Input_inputNeurons.Location = new System.Drawing.Point(108, 275);
+            this.Input_inputNeurons.Name = "Input_inputNeurons";
+            this.Input_inputNeurons.Size = new System.Drawing.Size(25, 20);
+            this.Input_inputNeurons.TabIndex = 0;
+            // 
+            // Input_hiddenLayer
+            // 
+            this.Input_hiddenLayer.Location = new System.Drawing.Point(178, 275);
+            this.Input_hiddenLayer.Name = "Input_hiddenLayer";
+            this.Input_hiddenLayer.Size = new System.Drawing.Size(25, 20);
+            this.Input_hiddenLayer.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1372, 450);
+            this.Controls.Add(this.Input_hiddenLayer);
             this.Controls.Add(this.h10);
             this.Controls.Add(this.h9);
             this.Controls.Add(this.h6);
@@ -263,7 +272,6 @@
         #endregion
 
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.TextBox Input_inputNeurons;
         private System.Windows.Forms.PictureBox I3;
         private System.Windows.Forms.PictureBox I2;
         private System.Windows.Forms.PictureBox I1;
@@ -280,6 +288,8 @@
         private System.Windows.Forms.PictureBox h6;
         private System.Windows.Forms.PictureBox h7;
         private System.Windows.Forms.PictureBox h8;
+        private System.Windows.Forms.TextBox Input_inputNeurons;
+        private System.Windows.Forms.TextBox Input_hiddenLayer;
     }
 }
 
