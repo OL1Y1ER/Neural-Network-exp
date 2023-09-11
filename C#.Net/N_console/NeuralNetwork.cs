@@ -21,7 +21,7 @@ namespace NeuralNetwork
             neuronsInLayers.Add(inputNeurons);
             
             for(int i = 0; i < amountOfHidenLayers; i++){
-                System.Console.Write($"How many Neurons in the {0}. Hidden Layyer? :", i+1);
+                System.Console.Write($"How many Neurons in the {i + 1}. Hidden Layyer? :");
                 int neuronAmount = int.Parse(Console.ReadLine());
                 neuronsInLayers.Add(neuronAmount);
             }
@@ -31,11 +31,24 @@ namespace NeuralNetwork
             neuronsInLayers.Add(outPutNeurons);
 
             
-            NeuralNetwork N = new NeuralNetwork(neuronsInLayers.Count(), neuronsInLayers.ToArray());
+            NeuralNetwork N = new NeuralNetwork(neuronsInLayers.Count(), neuronsInLayers.ToArray()); // Create Neural Network
             N.InitializeWeightsAndBiases();
-            double[] inputs = { .2, -.1 };
+            double[] inputs = new int[neuronsInLayers[0]];
+            Cosole.Clear();
+            //Get InputInfo
+            for(int i = 0; i < inputs.Length; i++)
+            {
+                Console.Write($"Give me the {i}. input :");
+
+                inputs[i] = Console.ReadLine();
+            }
+            Console.Clear();
+            Console.WriteLine("-------------OUTPUT------------------");
             double[] Output = N.Prediction(inputs);
-            Console.WriteLine(Output[0]);
+            for(int i = 0; i < Output.Length; i++)
+            {
+                Console.WriteLine($"{i+1}. Output: {Output[i]}")
+            }
         }
     }
 
