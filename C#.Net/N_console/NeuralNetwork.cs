@@ -10,8 +10,28 @@ namespace NeuralNetwork
     {
         static void Main(string[] args)
         {
-            int[] sizeOfLayers = { 2, 3, 1 }; 
-            NeuralNetwork N = new NeuralNetwork(3, sizeOfLayers);
+            List<int> neuronsInLayers = new List<int>();
+
+            System.Console.Write("How many Input Neurons? :");
+            int inputNeurons = int.Parse(Console.ReadLine());
+            
+            System.Console.Write("How many Hidden Layers? :");
+            int amountOfHidenLayers =int.Parse(Console.ReadLine());
+
+            neuronsInLayers.Add(inputNeurons);
+            
+            for(int i = 0; i < amountOfHidenLayers; i++){
+                System.Console.Write($"How many Neurons in the {0}. Hidden Layyer? :", i+1);
+                int neuronAmount = int.Parse(Console.ReadLine());
+                neuronsInLayers.Add(neuronAmount);
+            }
+
+            System.Console.Write("How many Output Neurons? :");
+            int outPutNeurons = int.Parse(Console.ReadLine());
+            neuronsInLayers.Add(outPutNeurons);
+
+            
+            NeuralNetwork N = new NeuralNetwork(neuronsInLayers.Count(), neuronsInLayers.ToArray());
             N.InitializeWeightsAndBiases();
             double[] inputs = { .2, -.1 };
             double[] Output = N.Prediction(inputs);
