@@ -10,47 +10,87 @@ namespace NeuralNetwork
     {
         static void Main(string[] args)
         {
+            NeuralNetwork N;
             List<int> neuronsInLayers = new List<int>();
+            double[] inputs;
+            double[] Output;
+            bool exit = false;
 
-            System.Console.Write("How many Input Neurons? :");
-            int inputNeurons = int.Parse(Console.ReadLine());
-            
-            System.Console.Write("How many Hidden Layers? :");
-            int amountOfHidenLayers =int.Parse(Console.ReadLine());
-
-            neuronsInLayers.Add(inputNeurons);
-            
-            for(int i = 0; i < amountOfHidenLayers; i++){
-                System.Console.Write($"How many Neurons in the {i + 1}. Hidden Layyer? :");
-                int neuronAmount = int.Parse(Console.ReadLine());
-                neuronsInLayers.Add(neuronAmount);
-            }
-
-            System.Console.Write("How many Output Neurons? :");
-            int outPutNeurons = int.Parse(Console.ReadLine());
-            neuronsInLayers.Add(outPutNeurons);
-
-            
-            NeuralNetwork N = new NeuralNetwork(neuronsInLayers.Count(), neuronsInLayers.ToArray()); // Create Neural Network
-            N.InitializeWeightsAndBiases();
-            double[] inputs = new double[neuronsInLayers[0]];
-            Console.Clear();
-            //Get InputInfo
-            for(int i = 0; i < inputs.Length; i++)
+            createVisualistaionNeuralNet();
+            while (!exit)
             {
-                Console.Write($"Give me the {i}. input :");
+                GetInput();
+                GetOutput();
+            }
 
-                inputs[i] = int.Parse(Console.ReadLine());
-            }
-            Console.Clear();
-            Console.WriteLine("-------------OUTPUT------------------");
-            double[] Output = N.Prediction(inputs);
-            for(int i = 0; i < Output.Length; i++)
+            void createVisualistaionNeuralNet()
             {
-                Console.WriteLine($"{i+1}. Output: {Output[i]}");
+                System.Console.Write("How many Input Neurons? :");
+                int inputNeurons = int.Parse(Console.ReadLine());
+
+                System.Console.Write("How many Hidden Layers? :");
+                int amountOfHidenLayers = int.Parse(Console.ReadLine());
+
+                neuronsInLayers.Add(inputNeurons);
+
+                for (int i = 0; i < amountOfHidenLayers; i++)
+                {
+                    System.Console.Write($"How many Neurons in the {i + 1}. Hidden Layyer? :");
+                    int neuronAmount = int.Parse(Console.ReadLine());
+                    neuronsInLayers.Add(neuronAmount);
+                }
+
+                System.Console.Write("How many Output Neurons? :");
+                int outPutNeurons = int.Parse(Console.ReadLine());
+                neuronsInLayers.Add(outPutNeurons);
+
+
+                N = new NeuralNetwork(neuronsInLayers.Count(), neuronsInLayers.ToArray()); // Create Neural Network
+                N.InitializeWeightsAndBiases();
+                inputs = new double[neuronsInLayers[0]];
+                Console.Clear();
+
             }
+
+            void GetInput()
+            {
+                //Get InputInfo
+                for (int i = 0; i < inputs.Length; i++)
+                {
+                    Console.Write($"Give me the {i + 1}. input :");
+
+                    inputs[i] = int.Parse(Console.ReadLine());
+                }
+                Console.Clear();
+            }
+
+            void GetOutput()
+            {
+                Console.WriteLine("-------------OUTPUT------------------");
+                Output = N.Prediction(inputs);
+                for (int i = 0; i < Output.Length; i++)
+                {
+                    Console.WriteLine($"{i + 1}. Output: {Output[i]}");
+                }
+
+                Console.WriteLine(" (1 for new Input, 2 for exits): ");
+                if(Console.ReadLine() == "2")
+                {
+                    exit = true;
+                }
+                else
+                {
+                    Console.Clear();
+        
+                }
+
+            }
+
+
         }
     }
+        
+}
 
 
 
@@ -120,7 +160,7 @@ namespace NeuralNetwork
                     return value;
             }
         }
-/*should work too cant remember why this is commentes...... fuck
+        /*should work too cant remember why this is commentes...... fuck
         private double RandomDouble(double min, double max)
         {
             Random R = new Random();
