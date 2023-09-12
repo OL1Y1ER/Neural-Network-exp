@@ -33,21 +33,21 @@ namespace NeuralNetwork
             
             NeuralNetwork N = new NeuralNetwork(neuronsInLayers.Count(), neuronsInLayers.ToArray()); // Create Neural Network
             N.InitializeWeightsAndBiases();
-            double[] inputs = new int[neuronsInLayers[0]];
-            Cosole.Clear();
+            double[] inputs = new double[neuronsInLayers[0]];
+            Console.Clear();
             //Get InputInfo
             for(int i = 0; i < inputs.Length; i++)
             {
                 Console.Write($"Give me the {i}. input :");
 
-                inputs[i] = Console.ReadLine();
+                inputs[i] = int.Parse(Console.ReadLine());
             }
             Console.Clear();
             Console.WriteLine("-------------OUTPUT------------------");
             double[] Output = N.Prediction(inputs);
             for(int i = 0; i < Output.Length; i++)
             {
-                Console.WriteLine($"{i+1}. Output: {Output[i]}")
+                Console.WriteLine($"{i+1}. Output: {Output[i]}");
             }
         }
     }
@@ -100,13 +100,13 @@ namespace NeuralNetwork
                     {
                         neurons[i][j] += neurons[i - 1][k] * weights[i - 1][j][k];
                     }
-                    neurons[i][j] = ActivationFunction(neurons[i][j], "Sigmoid");
+                    neurons[i][j] = ActivationFunction(neurons[i][j], "F me");
                     neurons[i][j] += bias[biasIndex];
                     biasIndex++;
                 }
             }
 
-            return neurons[neurons.Length - 1];
+            return neurons[neurons.Length - 1];//Why do I get same Output?
         }
 
         private double ActivationFunction(double value, string name)
@@ -146,78 +146,6 @@ namespace NeuralNetwork
                 }
             }
         }
-
-        public void Train(double[][] trainingData, double learningRate, int epochs)
-        {
-            for (int epoch = 0; epoch < epochs; epoch++)
-            {
-                Shuffle(trainingData);
-
-                foreach (var data in trainingData)
-                {
-                    double[] input = new double[] { data[0] }; // Wrap input in an array
-                    double[] target = new double[] { data[1] }; // Wrap target in an array
-
-                    double[] prediction = Prediction(input);
-
-                    double[] errors = new double[prediction.Length];
-
-                    for (int i = 0; i < prediction.Length; i++)
-                    {
-                        errors[i] = target[i] - prediction[i];
-                    }
-
-                    Backpropagate(errors, learningRate);
-                }
-            }
-        }
-
-        private void Shuffle(double[][] data)
-        {
-            Random random = new Random();
-            int n = data.Length;
-            while (n > 1)
-            {
-                n--;
-                int k = random.Next(n + 1);
-                var temp = data[k];
-                data[k] = data[n];
-                data[n] = temp;
-            }
-        }
-
-        private void Backpropagate(double[] errors, double learningRate)
-        {
-            for (int layer = layers - 1; layer > 0; layer--)
-            {
-                for (int neuronIndex = 0; neuronIndex < neurons[layer].Length; neuronIndex++)
-                {
-                    double gradient = errors[neuronIndex] * ActivationDerivative(neurons[layer][neuronIndex], "Sigmoid");
-
-                    bias[layer - 1] += learningRate * gradient;
-
-                    for (int prevNeuronIndex = 0; prevNeuronIndex < neurons[layer - 1].Length; prevNeuronIndex++)
-                    {
-                        weights[layer - 1][neuronIndex][prevNeuronIndex] +=
-                            learningRate * gradient * neurons[layer - 1][prevNeuronIndex];
-                    }
-                }
-            }
-        }
-
-        private double ActivationDerivative(double value, string name)
-        {
-            switch (name)
-            {
-                case "Sigmoid":
-                    return value * (1 - value);
-
-                default:
-                    return 1;
-            }
-        }
-
-        // Other methods like SaveNeuralNetwork, LoadNeuralNetwork, Evaluation, etc.
     }
 
 
