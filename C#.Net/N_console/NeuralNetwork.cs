@@ -120,12 +120,23 @@ namespace NeuralNetwork
                     return value;
             }
         }
-
+/*should work too cant remember why this is commentes...... fuck
         private double RandomDouble(double min, double max)
         {
             Random R = new Random();
             double d = R.NextDouble();
             return (d * (max - min) + min);
+        }
+
+        */
+
+        private double RandomDouble(double min, double max)// Make Random doubles work
+        {
+            Random R = new Random();
+            double d = R.NextDouble();
+
+            double randomDouble = Math.Round((d * (max - min) + min) * 100) / 100;
+            return randomDouble;
         }
 
         public void InitializeWeightsAndBiases()
