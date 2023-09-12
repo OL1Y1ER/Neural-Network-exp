@@ -11,6 +11,7 @@ namespace NeuralNetwork
         static void Main(string[] args)
         {
             List<int> neuronsInLayers = new List<int>();
+            bool exit = false;
 
             System.Console.Write("How many Input Neurons? :");
             int inputNeurons = int.Parse(Console.ReadLine());
@@ -26,6 +27,7 @@ namespace NeuralNetwork
                 neuronsInLayers.Add(neuronAmount);
             }
 
+
             System.Console.Write("How many Output Neurons? :");
             int outPutNeurons = int.Parse(Console.ReadLine());
             neuronsInLayers.Add(outPutNeurons);
@@ -35,20 +37,34 @@ namespace NeuralNetwork
             N.InitializeWeightsAndBiases();
             double[] inputs = new double[neuronsInLayers[0]];
             Console.Clear();
-            //Get InputInfo
-            for(int i = 0; i < inputs.Length; i++)
-            {
-                Console.Write($"Give me the {i}. input :");
 
-                inputs[i] = int.Parse(Console.ReadLine());
+            while(!exit){
+                //Get InputInfo
+                for(int i = 0; i < inputs.Length; i++)
+                {
+                    Console.Write($"Give me the {i}. input :");
+
+                    inputs[i] = int.Parse(Console.ReadLine());
+                }
+                Console.Clear();
+                Console.WriteLine("-------------OUTPUT------------------");
+                double[] Output = N.Prediction(inputs);
+                for(int i = 0; i < Output.Length; i++)
+                {
+                    Console.WriteLine($"{i+1}. Output: {Output[i]}");
+                }
+                Console.WriteLine(" (1 for new Input, 2 for exits): ");
+                if(Console.ReadLine() == "2")
+                {
+                    exit = true;
+                }
+                else
+                {
+                    Console.Clear();
+    
+                }
             }
-            Console.Clear();
-            Console.WriteLine("-------------OUTPUT------------------");
-            double[] Output = N.Prediction(inputs);
-            for(int i = 0; i < Output.Length; i++)
-            {
-                Console.WriteLine($"{i+1}. Output: {Output[i]}");
-            }
+            
         }
     }
 
@@ -100,7 +116,7 @@ namespace NeuralNetwork
                     {
                         neurons[i][j] += neurons[i - 1][k] * weights[i - 1][j][k];
                     }
-                    neurons[i][j] = ActivationFunction(neurons[i][j], "F me");
+                    neurons[i][j] = ActivationFunction(neurons[i][j], "_-");
                     neurons[i][j] += bias[biasIndex];
                     biasIndex++;
                 }
